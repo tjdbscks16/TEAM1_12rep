@@ -1,5 +1,11 @@
 import streamlit as st
+import pandas as pd
+import altair as alt
 
+
+# ================================
+# Task 1: 기본 UI 컴포넌트
+# ================================
 st.title("Task1: 기본 UI 컴포넌트")
 
 name = st.text_input("이름을 입력하세요", "")
@@ -18,8 +24,28 @@ if btn:
 #st.area_chart(data=None, x=10, y=10, x_label='testX', y_label='testY', color=None, stack=None, width="stretch", height="content", use_container_width=None)
 
 
-import pandas as pd
-import altair as alt
+
+
+# ================================
+# Task 2: 데이터표시하기
+# ================================
+st.set_page_config(
+    page_title = "Streamlit Tutorial",
+    page_icon = ":shark",
+    layout = "wide",
+    initial_sidebar_state = "auto"
+)
+st.header("Task 2: 데이터 표시하기")
+
+st.subheader("데이터프레임")
+uploaded_file = st.file_uploader("CSV 파일을 선택하세요", type=["csv"])
+if uploaded_file:
+    df = pd.read_csv(uploaded_file)
+    st.dataframe(df)
+else:
+    st.write("CSV 파일을 업로드하면 데이터가 여기에 표시됩니다.")
+
+msg = st.chat_input("메시지를 입력하세요")
 
 # ================================
 # Task 2: 데이터표시하기
