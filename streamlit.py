@@ -7,9 +7,17 @@ import pandas as pd
 import altair as alt
 
 # ================================
+# Task 3: 차트그리기
+# ================================
+from numpy.random import default_rng as rng
+df = pd.DataFrame(rng(0).standard_normal((20, 3)), columns=["a", "b", "c"])
+st.area_chart(df, x_label='areaX', y_label='areaY')
+st.line_chart(df, x_label='lineX', y_label='lineY')
+st.bar_chart(df, x_label='barX', y_label='barY')
+# ================================
 # Task 4: CSV 업로드
 # ================================
-st.title("Task 5: 파일 업로드 - CSV 파일 분석 (penguins.csv 사용)")
+st.title("Task 4: 파일 업로드 - CSV 파일 분석 (penguins.csv 사용)")
 
 uploaded_file = st.file_uploader("CSV 파일을 업로드하세요", type=["csv"])
 
@@ -37,7 +45,7 @@ st.write("---")
 # ================================
 # Task 5: 인터랙티브 필터
 # ================================
-st.title("Task 4: 인터랙티브 필터")
+st.title("Task 5: 인터랙티브 필터")
 
 if "penguins" not in st.session_state:
     st.warning("⚠ 먼저 Task 5에서 penguins.csv 파일을 업로드하세요.")
@@ -68,3 +76,6 @@ chart = (
 )
 
 st.altair_chart(chart, use_container_width=True)
+
+
+
