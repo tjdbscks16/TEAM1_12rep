@@ -42,7 +42,7 @@ uploaded_file = st.file_uploader("CSV 파일을 선택하세요", type=["csv"])
 
 if uploaded_file:
     df = pd.read_csv(uploaded_file)
-    st.session_state["uploaded_csv"] = df   # 🔥 세션에 저장
+    st.session_state["uploaded_csv"] = df   # 세션에 저장
     st.dataframe(df)
 else:
     st.write("CSV 파일을 업로드하면 데이터가 표시됩니다.")
@@ -54,10 +54,23 @@ msg = st.chat_input("메시지를 입력하세요")
 # Task 3: 차트그리기 
 # ================================
 from numpy.random import default_rng as rng
-df = pd.DataFrame(rng(0).standard_normal((20, 3)), columns=["a", "b", "c"])
-st.area_chart(df, x_label='areaX', y_label='areaY')
-st.line_chart(df, x_label='lineX', y_label='lineY')
-st.bar_chart(df, x_label='barX', y_label='barY')
+
+if "uploaded_csv" in st.session_state:
+    df = st.session_state["uploaded_csv"]
+
+   
+    st.line_chart(df["bill_length_mm"]) 
+    st.write("부리 길이 분포")
+
+    mass_df = df.groupby("species")["body_mass_g"].mean()
+    st.bar_chart(mass_df)
+    st.write("종별 평균 몸무게")
+
+    st.area_chart(df["body_mass_g"])
+    st.write("샘플별 체중")
+    
+else:
+    st.info("먼저 위에서 CSV 파일을 업로드 해주세요.")
 
 
 # ================================
@@ -118,6 +131,3 @@ chart = (
 )
 
 st.altair_chart(chart, use_container_width=True)
-
-
-
