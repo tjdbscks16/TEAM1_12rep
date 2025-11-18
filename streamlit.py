@@ -7,7 +7,7 @@ import pandas as pd
 import altair as alt
 
 # ================================
-# Task 5: CSV 업로드
+# Task 4: CSV 업로드
 # ================================
 st.title("Task 5: 파일 업로드 - CSV 파일 분석 (penguins.csv 사용)")
 
@@ -35,7 +35,7 @@ if uploaded_file is not None:
 st.write("---")
 
 # ================================
-# Task 4: 인터랙티브 필터
+# Task 5: 인터랙티브 필터
 # ================================
 st.title("Task 4: 인터랙티브 필터")
 
