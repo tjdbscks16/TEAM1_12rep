@@ -56,14 +56,6 @@ st.area_chart(df, x_label='areaX', y_label='areaY')
 st.line_chart(df, x_label='lineX', y_label='lineY')
 st.bar_chart(df, x_label='barX', y_label='barY')
 # ================================
-# Task 3: 차트그리기
-# ================================
-from numpy.random import default_rng as rng
-df = pd.DataFrame(rng(0).standard_normal((20, 3)), columns=["a", "b", "c"])
-st.area_chart(df, x_label='areaX', y_label='areaY')
-st.line_chart(df, x_label='lineX', y_label='lineY')
-st.bar_chart(df, x_label='barX', y_label='barY')
-# ================================
 # Task 4: CSV 업로드
 # ================================
 st.title("Task 4: 파일 업로드 - CSV 파일 분석 (penguins.csv 사용)")
